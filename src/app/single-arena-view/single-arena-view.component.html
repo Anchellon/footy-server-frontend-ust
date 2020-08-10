@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<br>
+<p>single-arena-view works!</p>
+<div *ngIf="pitchs">
+    {{pitchs[0].pitch_name}}
+    <div class="row">
+        <div *ngFor="let pitch of pitchs">
+            <div class="col-md-6">
+                <div class="card" style="width: 18rem; padding: 10px">
+                    <img src="src\assets\img\card_img.jpg" class="card-img-top" alt="Insert Card Picture">
+                    <div class="card-body">
+                        <h5 class="card-title">{{pitch.pitch_name}}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                            content.</p>
+                        <a (click)=onBookPitch(arena.uuid) class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            <div>
+            <br>
+        </div>
+    </div>
+</div>

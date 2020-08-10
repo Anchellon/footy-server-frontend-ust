@@ -1,0 +1,51 @@
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <h1>Sign Your venue up right here</h1>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="form-group">
+            <label for="UUID">UUID</label>
+            <input id="name" name="uuid" class="form-control" [(ngModel)]="arena.uuid" required pattern="^A[0-9][0-9]$" minlength=3 #unique_id="ngModel" 
+                [class.field-error]="myForm.submitted && unique_id.invalid"
+            >
+            <div [hidden]=" unique_id.valid" class="alert alert-danger">
+                Enter a vaild ID
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="arena_name">Arena Name</label>
+            <input id="arena_name" name="arena_name" class="form-control" [(ngModel)]="arena.arena_name" 
+            required maxlength="50" #arena_name="ngModel"
+            [class.field-error]="myForm.submitted && arena_name.invalid">
+            <div [hidden]="arena_name.valid" class="alert alert-danger">
+                Enter a valid Arena Name
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="arena_address">Arena Address</label>
+            <input id="arena_address" name="arena_address" class="form-control" [(ngModel)]="arena.arena_address" 
+            required maxlength="50" #arena_address="ngModel"
+            [class.field-error]="myForm.submitted && arena_address.invalid">
+            
+            <div [hidden]="manager_id.valid" class="alert alert-danger">
+                Don't Exceed 50 characters
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="manager_id">Manager ID</label>
+            <input id="manager_id" type="number" name="manager_id" class="form-control" [(ngModel)]="arena.manager_id" 
+            required pattern="^[1-9]?[0-9]{1}$|^100$" #manager_id="ngModel"
+            [class.field-error]="myForm.submitted && manager_id.invalid">
+            
+            <div [hidden]="manager_id.valid" class="alert alert-danger">
+                Enter a vaild manager ID
+            </div>
+        </div>
+        <button class="btn btn-primary">Send</button>
+    </form>
+    {{myForm.form.value|json}}
+    {{myForm.valid}}
+</div>
